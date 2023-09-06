@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 const ListItem = styled.li`
   list-style: none;
-  margin: 6px;
 `
 
 const Checkbox = styled.input`
@@ -41,5 +40,5 @@ export default {
   CheckmarkWrapper,
   Checkmark,
   InputText,
-  RemoveButton
+  RemoveButton,
 }

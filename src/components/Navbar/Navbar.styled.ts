@@ -1,4 +1,9 @@
 import styled from 'styled-components'
+// import { ReactComponent as Icon } from '../../assets/addButtonW.svg';
+
+// const AddButton = styled(Icon)`
+//   background: transparent;
+// `;
 
 const Nav = styled.nav`
   align-items: flex-end;
@@ -25,5 +30,6 @@ const Title = styled.h2`
 export default { 
   Nav,
   TitleWrapper,
-  Title
+  Title,
+  // AddButton
 }
