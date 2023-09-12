@@ -10,6 +10,24 @@ function App() {
   // hooks
   const [categories, setCategories] = React.useState<Category[]>([])
 
+  React.useEffect(() => {
+    const url = 'http://localhost:3000/'    
+    // fetch(`${url}categories/`)
+    //  .then((resposta) => resposta.json())
+    //  .then((dados) => console.log(dados))
+    //  .catch((error) => console.log(error))
+    const loadCategories = async () => {
+      try {
+        const resposta = await fetch(`${url}categories/`)
+        const dados = await resposta.json()
+      } catch(error){
+        console.log(error)
+      }
+    }
+    loadCategories()
+
+  }, [])
+
   const onCreateCategory = (category: Category) => {
     const newCategories = categories.map((mapCategory) => ({ 
       ...mapCategory,
