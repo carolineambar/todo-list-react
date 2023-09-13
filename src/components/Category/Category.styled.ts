@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 const Item = styled.li<{ isActive: boolean }>`
   align-items: center;
-  background-color: ${(props) => props.isActive ? `var(--white)` : `var(--purple)`}; 
+  background-color: ${(props) => props.isActive ? `var(--white)` : `var(--lightPurple)`}; 
   border-radius: 1rem 0rem 0rem 1rem;
-  color: var(--white);
+  color: ${(props) => props.isActive ? 'var(--lightPurple)' : 'var(--white)'};
   cursor: pointer;
   display: flex;
   font-size: 1.25rem;
@@ -16,7 +16,30 @@ const Item = styled.li<{ isActive: boolean }>`
   padding-right: 0.5rem;
   position: relative;
   width: 18.75rem;
+  position: relative;
+
+  ${(props)=> props.isActive && `
+    &::before, &::after {
+      background-image: url('/roundedCorner.svg');
+      content: '';
+      height: 1rem;
+      position: absolute;
+      right: 0;
+      width: 1rem;
+    }
+
+    &::before {
+        top: -1rem;
+    }
+
+    &::after {
+        bottom: -1rem;
+        transform: rotate(-90deg);
+        z-index: 1;
+    }
+  `}
 `
+
 
 const Input = styled.input`
   background-color: transparent;
@@ -27,8 +50,8 @@ const Input = styled.input`
   color: inherit;
 `
 
-const Counter = styled.div`
-  background-color: var(--white);
+const Counter = styled.div<{ isActive: boolean }>`
+  background-color: ${(props) => props.isActive ? 'var(--lightPurple)' : 'var(--white)'};
   border-radius: 0.25rem;
   color: var(--purple);
   font-size: 0.75rem;

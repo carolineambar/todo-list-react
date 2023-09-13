@@ -1,7 +1,7 @@
 import CategoryComponent from "../Category"
 import Navbar from './Navbar.styled'
 import type { Category } from '../../types/types'
-
+import addButtonW from '../../assets/addButtonW.svg'
 
 type NavbarComponentProps = {
   categories: Category[],
@@ -16,7 +16,7 @@ const NavbarComponent = (props: NavbarComponentProps) => (
     <Navbar.TitleWrapper>
       <Navbar.Title>Categorias</Navbar.Title>
 
-      <button
+      <Navbar.AddCategoryButton
         type="button"
         onClick={
           () => props.onCreateCategory({
@@ -27,9 +27,8 @@ const NavbarComponent = (props: NavbarComponentProps) => (
           })
         }
       >
-        New category
-        {/* <AddButton /> */}
-      </button>
+        <img src={addButtonW} />
+      </Navbar.AddCategoryButton>
     </Navbar.TitleWrapper>
 
     <ul>

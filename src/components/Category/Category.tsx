@@ -14,10 +14,11 @@ const CategoryComponent = (props: CategoryComponentProps) => (
   <Category.Item isActive={props.active} onClick={props.handleActiveCategory}>
     <Category.Input
       value={props.text}
+      autoFocus
       onChange={(e) => props.onUpdateCategoryValue(props.index, e.target.value)}
     />
 
-    <Category.Counter>
+    <Category.Counter isActive={props.active}>
       {props.items.filter((item) => item.checked).length}/{props.items.length}
     </Category.Counter>
   </Category.Item>

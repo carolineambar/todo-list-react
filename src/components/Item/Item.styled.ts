@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const ListItem = styled.li`
   list-style: none;
+  margin-bottom: 6px;
 `
 
 const Checkbox = styled.input`
@@ -10,18 +11,30 @@ const Checkbox = styled.input`
 
 const Label = styled.label<{ isActive: boolean }>`
   align-items: center;
-  background-color: ${(props) => props.isActive ? 'var(--grey)' : 'var(--purple)'};
+  background-color: ${(props) => props.isActive ? 'var(--lightGrey)' : 'var(--purple)'};
   border-radius: 12px;
-  color: var(--white);
+  color: ${(props) => props.isActive ? 'var(--darkGrey)': 'var(--white)'};
+  text-decoration: ${(props) => props.isActive ? 'line-through': 'none'};
   display: flex;
   gap: 8px;
-  max-width: 300px;
+  width: 300px;
   padding: 16px;
 `
 
-const CheckmarkWrapper = styled.div``
+const CheckmarkWrapper = styled.div<{ isActive: boolean }>`
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 4px;
+  display: flex;
+  height: 16px;
+  justify-content: center;
+  width: 16px;
+  background-color: ${(props) => props.isActive ? 'var(--grey)' : 'var(--white)'};
+`
 
-const Checkmark = styled.img``
+const Checkmark = styled.img<{ isActive: boolean }>`
+  ${(props) => !props.isActive && 'opacity:0;'};
+`
 
 const InputText = styled.input`
   background-color: transparent;
@@ -31,7 +44,13 @@ const InputText = styled.input`
   color: inherit;
 `
 
-const RemoveButton = styled.button``
+const RemoveButton = styled.button`
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+`
 
 export default {
   ListItem,
@@ -40,5 +59,5 @@ export default {
   CheckmarkWrapper,
   Checkmark,
   InputText,
-  RemoveButton,
+  RemoveButton
 }

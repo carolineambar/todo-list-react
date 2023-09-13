@@ -26,3 +26,7 @@ export const TitleWrapper = styled.div`
   font-weight: 700;
   font-size: 42px;
 `;
+
+export const AddItemButton = styled.button`
+  background-color: transparent;
+`
