@@ -9,11 +9,6 @@
       "text": "categoria 1",
       "active": true,
       "id": 2
-    },
-    {
-      "text": "",
-      "active": true,
-      "id": 3
     }
   ],
   "items": [
@@ -24,10 +19,16 @@
       "categoryId": 1
     },
     {
-      "text": "",
-      "checked": false,
+      "text": "fsggf",
+      "checked": true,
       "categoryId": 1,
       "id": 2
+    },
+    {
+      "text": "onasdda",
+      "checked": true,
+      "categoryId": 1,
+      "id": 3
     }
   ]
 }

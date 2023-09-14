@@ -20,7 +20,13 @@ const deleteItem = async (itemId: string) => {
   });
 }
 
+const editItem = async (item: Partial<Item>) => request(`${url}/${item.id}`, {
+  method: 'PUT',
+  body: item
+})
+
 export {
   postItem,
+  editItem,
   deleteItem
 }

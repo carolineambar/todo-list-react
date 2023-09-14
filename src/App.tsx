@@ -6,7 +6,7 @@ import type { Category } from './types/types'
 import { Container, ItemContainer, ItemWrapper, TitleWrapper, AddItemButton } from './App.styled'
 import addButtonP from './assets/addButtonP.svg'
 import { getCategories, postCategory } from './api/categories'
-import { postItem, deleteItem } from './api/items'
+import { postItem, deleteItem, editItem } from './api/items'
 
 function App() {
   // hooks
@@ -65,17 +65,7 @@ function App() {
 
   
   
-  const onUpdateItemValue = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
-    const newCategories = categories.map((category) => ({
-      ...category,
-      items: category.items.map((categoryItem) => ({
-        ...categoryItem,
-        text: category.active && id === categoryItem.id ? e.target.value : categoryItem.text
-      }))
-    }))
-
-    setCategories(newCategories)
-  }
+ 
 
   const onCheckItem = (id: string) => {
     const newCategories = categories.map((category) => ({
@@ -89,16 +79,48 @@ function App() {
     setCategories(newCategories)
   }
 
-  const onDeleteItem = (id: string) => {
+  const onDeleteItem = async (id: string) => {
+    try {
+      await deleteItem(id);
+      const newCategories = categories.map((category) => ({
+        ...category,
+        items: category.active ? category.items.filter((categoryItem) => id !== categoryItem.id) : category.items
+      }));
+      setCategories(newCategories);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const activeCategory = categories.find((category) => category.active)
+
+  const onUpdateItemValue = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
     const newCategories = categories.map((category) => ({
       ...category,
-      items: category.active ? category.items.filter((categoryItem) => id !== categoryItem.id) : category.items
+      items: category.items.map((categoryItem) => ({
+        ...categoryItem,
+        text: category.active && id === categoryItem.id ? e.target.value : categoryItem.text
+      }))
     }))
-
+    
     setCategories(newCategories)
   }
 
-  const activeCategory = categories.find((category) => category.active)
+  const onSaveItemChange = async (value: string | boolean, key: 'checked' | 'text', id: string) => {
+    try {
+      const updatedItem = activeCategory?.items.find((item) => item.id === id)
+      if (updatedItem) {
+        if (key === 'checked' && typeof value === 'boolean') {
+          updatedItem.checked = value
+        } else if(typeof value === 'string') {
+          updatedItem.text = value
+        }
+        await editItem(updatedItem)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const onCreateItem = async () => {
     const newItem = {
@@ -164,6 +186,7 @@ function App() {
                 onCheck={() => onCheckItem(item.id)}
                 onDelete={() => onDeleteItem(item.id)}
                 onChange={(e) => onUpdateItemValue(e, item.id)}
+                onSaveItemChange={(value, key) => onSaveItemChange(value, key, item.id)}
               />
             ))
           }
