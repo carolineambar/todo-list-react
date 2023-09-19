@@ -5,7 +5,7 @@ import Navbar from './components/Navbar'
 import type { Category } from './types/types'
 import { Container, ItemContainer, ItemWrapper, TitleWrapper, AddItemButton } from './App.styled'
 import addButtonP from './assets/addButtonP.svg'
-import { getCategories, postCategory } from './api/categories'
+import { getCategories, postCategory, editCategory } from './api/categories'
 import { postItem, deleteItem, editItem } from './api/items'
 
 function App() {
@@ -44,8 +44,6 @@ function App() {
     }
   }
 
-  
-
   const onUpdateCategoryValue = (categoryIndex: number,  value: string) => {
     const newCategories = [...categories]
     newCategories[categoryIndex].text = value
@@ -62,10 +60,6 @@ function App() {
 
     setCategories(newCategories)
   }
-
-  
-  
- 
 
   const onCheckItem = (id: string) => {
     const newCategories = categories.map((category) => ({
@@ -93,6 +87,20 @@ function App() {
   };
 
   const activeCategory = categories.find((category) => category.active)
+
+  const onSaveCategoryChange = async ( value: string) => {
+    try {
+      const updatedCategory = {
+        ...activeCategory,
+        text: value,
+      }
+
+      await editCategory(updatedCategory)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const onUpdateItemValue = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
     const newCategories = categories.map((category) => ({
@@ -155,6 +163,7 @@ function App() {
         onCreateCategory={onCreateCategory}
         onUpdateCategoryValue={onUpdateCategoryValue}
         handleActiveCategory={handleActiveCategory}
+        onSaveCategoryChange={onSaveCategoryChange}
       />
 
       <ItemContainer>
