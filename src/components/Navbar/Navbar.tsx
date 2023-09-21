@@ -9,6 +9,7 @@ type NavbarComponentProps = {
   onUpdateCategoryValue: (categoryIndex: number,  value: string) => void,
   handleActiveCategory: (id: string) => void
   onSaveCategoryChange: (value: string) => void
+  onDeleteCategory: (id: string) => void
 }
 
 
@@ -44,6 +45,7 @@ const NavbarComponent = (props: NavbarComponentProps) => (
             index={index}
             handleActiveCategory={() => props.handleActiveCategory(category.id)}
             onSaveCategoryChange={props.onSaveCategoryChange}
+            onDeleteCategory={() => props.onDeleteCategory(category.id)}
           />
         ))
       }

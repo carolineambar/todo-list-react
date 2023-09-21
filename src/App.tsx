@@ -5,7 +5,7 @@ import Navbar from './components/Navbar'
 import type { Category } from './types/types'
 import { Container, ItemContainer, ItemWrapper, TitleWrapper, AddItemButton } from './App.styled'
 import addButtonP from './assets/addButtonP.svg'
-import { getCategories, postCategory, editCategory } from './api/categories'
+import { getCategories, postCategory, editCategory, deleteCategory } from './api/categories'
 import { postItem, deleteItem, editItem } from './api/items'
 
 function App() {
@@ -86,6 +86,18 @@ function App() {
     }
   };
 
+  const onDeleteCategory = async (id: string) => {
+    try {
+
+      await deleteCategory(id);
+      // fazer o filter do category e o setCategories
+            
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   const activeCategory = categories.find((category) => category.active)
 
   const onSaveCategoryChange = async ( value: string) => {
@@ -164,6 +176,7 @@ function App() {
         onUpdateCategoryValue={onUpdateCategoryValue}
         handleActiveCategory={handleActiveCategory}
         onSaveCategoryChange={onSaveCategoryChange}
+        onDeleteCategory={onDeleteCategory}
       />
 
       <ItemContainer>

@@ -1,50 +1,23 @@
 {
   "categories": [
     {
-      "id": 1,
-      "text": "jhgjgjgjh",
-      "active": true,
-      "items": [
-        {
-          "id": 1,
-          "text": "item 1 categoria 1 ",
-          "checked": false,
-          "categoryId": 1
-        }
-      ]
-    },
-    {
-      "text": 2,
+      "text": "cat 3",
       "active": true,
       "id": 2,
-      "items": [
-        {
-          "text": "jhfhgj",
-          "checked": false,
-          "categoryId": 2,
-          "id": 2
-        }
-      ]
+      "items": []
     },
     {
-      "text": 3,
+      "text": "categoria 2",
       "active": true,
       "id": 3,
       "items": []
-    }
-  ],
-  "items": [
-    {
-      "id": 1,
-      "text": "item 1 categoria 1 ",
-      "checked": false,
-      "categoryId": 1
     },
     {
-      "text": "jhfhgj",
-      "checked": false,
-      "categoryId": 2,
-      "id": 2
+      "text": "cat 3",
+      "active": true,
+      "id": 4,
+      "items": []
     }
-  ]
+  ],
+  "items": []
 }

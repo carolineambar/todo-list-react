@@ -20,9 +20,14 @@ const editCategory = async (category: Partial<Category>) => request(`${url}${cat
     body: category
 })
 
+const deleteCategory = async (id: string) => request(`${url}${id}`, {
+    method: 'DELETE'
+})
+
 export { 
     getCategories,
     postCategory,
-    editCategory
+    editCategory,
+    deleteCategory
  }
  

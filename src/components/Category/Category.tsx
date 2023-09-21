@@ -1,5 +1,6 @@
 import { Item } from '../../types/types'
 import Category from './Category.styled'
+import deleteButton from '../../assets/addButtonP.svg'
 
 type CategoryComponentProps = {
   text: string,
@@ -8,11 +9,15 @@ type CategoryComponentProps = {
   onUpdateCategoryValue: (categoryIndex: number,  value: string) => void,
   index: number,
   handleActiveCategory: () => void,
-  onSaveCategoryChange: (id: string) => void,
+  onSaveCategoryChange: (text: string) => void,
+  onDeleteCategory: () => void,
 }
 
 const CategoryComponent = (props: CategoryComponentProps) => (
   <Category.Item isActive={props.active} onClick={props.handleActiveCategory}>
+    <Category.CloseButton onClick={props.onDeleteCategory}>
+      <Category.Image src={deleteButton}/>
+    </Category.CloseButton>
     <Category.Input
       value={props.text}
       autoFocus
