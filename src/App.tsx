@@ -88,8 +88,9 @@ function App() {
 
   const onDeleteCategory = async (id: string) => {
     try {
-
       await deleteCategory(id);
+      const newCategories = (categories.filter((categoryItem) => id !== categoryItem.id))
+      setCategories(newCategories)
       // fazer o filter do category e o setCategories
             
     } catch (error) {

@@ -1,23 +1,4 @@
 {
-  "categories": [
-    {
-      "text": "cat 3",
-      "active": true,
-      "id": 2,
-      "items": []
-    },
-    {
-      "text": "categoria 2",
-      "active": true,
-      "id": 3,
-      "items": []
-    },
-    {
-      "text": "cat 3",
-      "active": true,
-      "id": 4,
-      "items": []
-    }
-  ],
+  "categories": [],
   "items": []
 }
