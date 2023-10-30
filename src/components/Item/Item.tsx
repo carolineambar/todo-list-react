@@ -1,6 +1,6 @@
 // Tem html dentro do js, é react (jsx)
 import checkmark from '../../assets/checkmark.png'
-import deletebutton from '../../assets/deletebutton.svg'
+import deletebutton from '../../assets/deleteButton.svg'
 import Item from './Item.styled'
 
 type ItemComponentProps = {
