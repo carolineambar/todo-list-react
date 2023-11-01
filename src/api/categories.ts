@@ -1,7 +1,7 @@
 import request from "./index";
 import { Category } from "../types/types";
 
-const url = `${import.meta.env.VITE_API_URL}/categories/`
+const url = 'https://todo-list-api-mj3o.onrender.com/categories/'
 
 const getCategories = async () => request(`${url}?_embed=items`, {
     method: 'GET'
